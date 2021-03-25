@@ -8,13 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var viewModel: OilViewModel!
+    var viewModel = OilViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.addSubview(tableView)
         self.view.addSubview(addModelStringButton)
-        viewModel = OilViewModel()
         initBinding()
         
     }
@@ -39,10 +38,12 @@ class ViewController: UIViewController {
     }()
     
     @objc func addModelStringButtonPress(sender: UIButton) {
-        print("新增文字")
-        let oilModel = OilModel()
-        oilModel.title = "test\(viewModel.oilModelList.value.count)"
-        viewModel.oilModelList.value.append(oilModel)
+        print("呼叫api")
+        viewModel.getOilJson()
+    }
+    
+    @objc func buttonPress(sender: UIButton) {
+       
     }
     
     func initBinding() {
@@ -60,7 +61,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: HomeCell = tableView.dequeueReusableCell(withIdentifier: "HomeCell")  as! HomeCell
-        cell.titleLabel.text = viewModel.oilModelList.value[indexPath.item].title
+        cell.titleLabel.text = viewModel.oilModelList.value[indexPath.item].octane98
         return cell
     }
 }

@@ -5,8 +5,8 @@
 //  Created by steven on 2021/3/24.
 //
 
-import Foundation
+import UIKit
 
-class OilModel {
-    var title: String = ""
+class OilModel: Codable {
+    var octane98: String = ""
 }

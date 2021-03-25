@@ -1,0 +1,6 @@
+framework module Pods_StevenMVVM {
+  umbrella header "Pods-StevenMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}
